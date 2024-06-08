@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unique QR Code Generator by Sachin">
+    <meta name="author" content="Sachin">
+    <meta name="creater" content="Sachin">
+    <meta name="copyright" content="© 2024 Sachin, All rights reserved.">
+    <title>QR Code Generator</title>
+    <style>
+
+        body {
+            text-align: center;
+            background-color: rgb(74, 75, 75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2{
+            font-size: 3vw;
+        }
+
+        #size {
+            width: 20vw;
+            padding: .3vw;
+            font-size: 1vw;
+            outline: none;
+            background-color: rgb(233, 220, 220);        
+                border-radius: .3vw;
+
+        }
+
+        #qrtext {
+            background-color: rgb(228, 221, 221);
+            width: 19vw;
+            border-radius: .3vw;
+            font-size: 1.2vw;
+            outline: none;
+            padding: .5vw;
+            font-family: sans-serif;
+        }
+
+        button {
+            background-color: bisque;
+            padding: .3vw 1vw;
+            font-size: 1.3vw;
+            font-weight: bold;
+            outline: none;
+            border: 1px solid black;
+            border-radius: .7vw;
+        }
+img{
+   height: 10vw;
+   margin-bottom: 1vw;
+   outline: none; 
+}
+@media (max-width:1100px){
+    h2{
+        font-size: 5vw;
+    }
+    #size,#qrtext{
+        font-size: 2vw;
+        width: 30vw;
+    }
+    button{
+        font-size: 2.2vw;
+        padding: .5vw 2vw;
+    }
+    
+}
+       
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <h2>QR Code Generator</h2>
+        <center><img src="" id="img"></center>
+        <select id="size">
+            <option value="100" selected>100x100</option>
+            <option value="150">150x150</option>
+            <option value="200">200x200</option>
+            <option value="250" >250x250</option>
+        </select>
+        <br><br>
+        <textarea id="qrtext" placeholder="Enter Text"></textarea>
+        <br><br>
+        <button onclick="genQR()">Generate</button> <br><br>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        function genQR() {
+            var altApi = "https://api.qrserver.com/v1/create-qr-code/?size=";
+            var myimg = document.getElementById("img");
+            var mytext = document.getElementById("qrtext").value;
+            var mysize = document.getElementById("size").value;
+
+            if (mytext !== "") {
+                myimg.src = altApi + mysize + "x" + mysize + "&data=" + mytext;
+            } else {
+                alert("Please Enter Correct Details");
+            }
+        }   
+    </script>
+</body>
+
+</html>
